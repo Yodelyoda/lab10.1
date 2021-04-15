@@ -3,13 +3,17 @@
 #include <fstream>
 #include <string>
 using namespace std;
-bool search(const char* s)
+bool search(const char* fname)
 {
-	for (int j = 0; s[j] != '\0'; j++)
-		for (int i = 0; s[i] != '\0'; i++)
-			if (s[i,j - 1] == 'n' && s[i,j + 1] == 'o')
+	ifstream f(fname); 
+	string s;
+	while (getline(f, s)) {
+		for (int j = 1; s[j] != '\0'; j++)
+			if (s[j - 1] == 'n' && s[j + 1] == 'o')
 				return true;
-	return false;
+		return false;
+	}
+	
 }
 int main()
 {
